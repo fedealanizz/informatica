@@ -17,7 +17,7 @@
 <input type="radio" name="genero" value="hombre"> Hombre
 <input type="radio" name="genero" value="mujer"> Mujer 
 
-        <button onclick="saludar()">Enviar</button>
+       
         <br>
         <label for="pais">País de nacimiento:</label>
  <select id="pais">
@@ -25,9 +25,12 @@
  <option value="bra">Brasil</option>
  <option value="usa">EE.UU.</option>
  </select>  
+ <br>
+ <button onclick="saludar()">Enviar</button>
         </form>
         <script>
              function saludar() {
+
  let nombre = document.getElementById("nombre").value;
  if (!nombre) {
  alert('Escribe tu nombre.');
@@ -40,15 +43,25 @@ let radio = document.querySelector('input[name="genero"]:checked');
  return;
  }
 // Determinar saludo
+
+
  if (radio.value === 'hombre') {
  saludo = 'Bienvenido';
  } else {
  saludo = 'Bienvenida';
  }
- alert(`${saludo}, ${nombre}`);
+//Capturar país y determinar saludo específico
+let pais = document.getElementById("pais").value;
+ let frasePais = "";
+ if (pais === "arg") frasePais = "Gracias por visitarnos";
+ if (pais === "bra") frasePais = "Obrigado por nos visitar";
+ if (pais === "usa") frasePais = "Thanks for visiting us";
+ alert(`${saludo} ${nombre}! ${frasePais}.`); 
+
 
  } 
 
         </script>
+        
 </body>
 </html>
