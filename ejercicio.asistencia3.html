@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 3 - Registro</title>
+</head>
+<body>
+  <h2>Registro de Estudiante</h2>
+
+  <label>Nombre:</label>
+  <input type="text" id="nombre"><br>
+  <label>Apellido:</label>
+  <input type="text" id="apellido"><br>
+  <label>Curso:</label>
+  <input type="text" id="curso"><br><br>
+
+  <button onclick="registrar()">Registrar</button>
+
+  <script>
+    function registrar() {
+      const nombre = document.getElementById("nombre").value;
+      const apellido = document.getElementById("apellido").value;
+      const curso = document.getElementById("curso").value;
+
+      if (!nombre || !apellido || !curso) {
+        alert("Completá todos los campos.");
+        return;
+      }
+
+      const mensaje = `
+        <h1>¡Bienvenido/a, ${nombre} ${apellido}!</h1>
+        <p>Tu registro al curso <strong>${curso}</strong> fue exitoso.</p>
+      `;
+
+      const nuevaVentana = window.open("", "_blank");
+      nuevaVentana.document.write(mensaje);
+    }
+  </script>
+</body>
+</html>

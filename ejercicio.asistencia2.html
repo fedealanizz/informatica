@@ -2,19 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ejercicio 2 - Calcular promedio</title>
+  <title>Ejercicio 2 - Promedio</title>
 </head>
 <body>
-  <h2>Ejercicio 2: Calcular promedio de 3 notas</h2>
+  <h2>Calcular Promedio</h2>
 
   <label>Nota 1:</label>
-  <input type="number" id="nota1"><br>
+  <input type="number" id="nota1" min="0" max="10"><br>
   <label>Nota 2:</label>
-  <input type="number" id="nota2"><br>
+  <input type="number" id="nota2" min="0" max="10"><br>
   <label>Nota 3:</label>
-  <input type="number" id="nota3"><br><br>
+  <input type="number" id="nota3" min="0" max="10"><br><br>
 
-  <button onclick="calcularPromedio()">Calcular promedio</button>
+  <button onclick="calcularPromedio()">Calcular</button>
+
+  <p id="resultado"></p>
 
   <script>
     function calcularPromedio() {
@@ -23,26 +25,18 @@
       const n3 = parseFloat(document.getElementById("nota3").value);
 
       if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
-        alert("Por favor, ingresá las tres notas.");
+        document.getElementById("resultado").innerText = "Completá las tres notas.";
         return;
       }
 
       const promedio = ((n1 + n2 + n3) / 3).toFixed(2);
-      const mensaje = promedio >= 6
-        ? `Tu promedio es ${promedio}. ¡Aprobaste!`
-        : `Tu promedio es ${promedio}. Necesitás repasar.`;
+      const mensaje = promedio >= 6 
+        ? `Tu promedio es ${promedio}. ¡Aprobaste! `
+        : `Tu promedio es ${promedio}. Necesitás repasar. `;
 
-      const html = `
-        <html>
-        <head><title>Resultado</title></head>
-        <body><h1>${mensaje}</h1></body>
-        </html>
-      `;
-
-      const ventana = window.open();
-      ventana.document.write(html);
-      ventana.document.close();
+      document.getElementById("resultado").innerText = mensaje;
     }
   </script>
 </body>
 </html>
+

@@ -2,43 +2,39 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ejercicio 1 - Confirmar asistencia</title>
+  <title>Ejercicio 1 - Asistencia</title>
 </head>
 <body>
-  <h2>Ejercicio 1: Confirmar asistencia a la fiesta</h2>
+  <h2>Confirmar asistencia a la fiesta</h2>
 
-  <label for="nombre">Nombre:</label>
+  <label>Nombre: </label>
   <input type="text" id="nombre"><br><br>
 
-  <label>¿Asistirás a la fiesta?</label><br>
-  <input type="radio" name="asistencia" value="sí"> Sí<br>
+  <label>¿Asistirás?</label><br>
+  <input type="radio" name="asistencia" value="si"> Sí<br>
   <input type="radio" name="asistencia" value="no"> No<br><br>
 
-  <button onclick="mostrarMensaje()">Confirmar</button>
+  <button onclick="confirmarAsistencia()">Enviar</button>
+
+  <p id="mensaje"></p>
 
   <script>
-    function mostrarMensaje() {
-      const nombre = document.getElementById("nombre").value.trim();
+    function confirmarAsistencia() {
+      const nombre = document.getElementById("nombre").value;
       const asistencia = document.querySelector('input[name="asistencia"]:checked');
 
       if (!nombre || !asistencia) {
-        alert("Por favor, completá todos los campos.");
+        document.getElementById("mensaje").innerText = "Por favor, completá todos los campos.";
         return;
       }
 
-      const mensaje = asistencia.value === "sí"
-        ? `¡Gracias por confirmar, ${nombre}! Nos vemos en la fiesta.`
-        : `¡Qué pena, ${nombre}! Te vamos a extrañar.`;
-
-      const html = `
-        <html>
-        <head><title>Confirmación</title></head>
-        <body><h1>${mensaje}</h1></body>
-        </html>
-      `;
-
-      
+      if (asistencia.value === "si") {
+        document.getElementById("mensaje").innerText = `¡Gracias por confirmar, ${nombre}! Nos vemos en la fiesta `;
+      } else {
+        document.getElementById("mensaje").innerText = `¡Qué pena, ${nombre}! Te vamos a extrañar `;
+      }
     }
   </script>
 </body>
 </html>
+
