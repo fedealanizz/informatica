@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Fecha</title>
+</head>
+<body>
+    <form id="formulario">
+     <h1> Registro de Usuario</h1>  
+     <label for="nombre"> Nombre de Usuario </label>
+     <input type="text" id="nombre" required><br>
+     <label for="fecha"> Fecha de nacimiento</label>
+     <input type="date" id="fecha" required> <br>
+     <button id="boton" onclick="registro()"> Enviar</button>
+    </form>
+    <script>
+        function registro(){
+            let usuario=document.getElementById("nombre").value;
+            let hoy= new Date();
+            let nacimiento= new Date(document.getElementById("fecha").value);
+            let edad= hoy.getfullyear()-nacimiento
+
+            alert("bienvenid@!!"+usuario);
+        }
+    </script>
+</body>
+</html>
